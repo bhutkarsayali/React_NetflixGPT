@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+.logo-netflix-svg {
+    width: 9.25rem;
+    height: 2.5rem;
+    color: rgb(229, 9, 20);
+    fill: currentColor;
+    display: block;
+    box-sizing: border-box;
+}
