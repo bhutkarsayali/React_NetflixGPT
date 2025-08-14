@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { BACKGROUND_IMAGE_URL } from "../utils/constants";
 import Header from "./Header";
 
 const Login = () => {
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const toggleSignupForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <Header />
@@ -18,14 +23,24 @@ const Login = () => {
           {/* Form Container */}
           <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
             <div className="max-w-md w-full bg-black/75 px-15 py-28 rounded-md text-white">
-              <h2 className="text-3xl font-bold mb-6">Sign In</h2>
+              <h2 className="text-3xl font-bold mb-6">
+                {isSignInForm ? "Sign In" : "Sign Up"}
+              </h2>
 
               <form className="space-y-4">
+                {!isSignInForm && (
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
+                  />
+                )}
                 <input
                   type="text"
                   placeholder="Email or mobile number"
                   className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
+
                 <input
                   type="password"
                   placeholder="Password"
@@ -36,7 +51,7 @@ const Login = () => {
                   type="submit"
                   className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-semibold"
                 >
-                  Sign In
+                  {isSignInForm ? "Sign In" : "Sign Up"}
                 </button>
 
                 <div className="flex items-center justify-between text-sm text-gray-400">
@@ -50,11 +65,28 @@ const Login = () => {
                 </div>
               </form>
 
-              <div className="mt-6 text-sm text-gray-400">
-                <span>New to Netflix? </span>
-                <a href="#" className="text-white hover:underline">
-                  Sign up now
-                </a>
+              <div className="mt-6 text-sm text-gray-400 flex items-center">
+                {!isSignInForm ? (
+                  <>
+                    <span className="text-lg">Already a user? </span>
+                    <p
+                      onClick={toggleSignupForm}
+                      className="text-white hover:underline cursor-pointer ml-2 font-bold text-lg"
+                    >
+                      Sign in now
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-lg">New to Netflix? </span>
+                    <p
+                      onClick={toggleSignupForm}
+                      className="text-white hover:underline cursor-pointer ml-2 font-bold text-lg"
+                    >
+                      Sign up now
+                    </p>
+                  </>
+                )}
               </div>
 
               <p className="mt-6 text-xs text-gray-500">
