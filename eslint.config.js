@@ -20,6 +20,7 @@ export default [
         document: "readonly",
         test: "readonly",
         expect: "readonly",
+        console: "readonly", // ✅ Add this line
       },
     },
     plugins: {
@@ -33,6 +34,7 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "no-unused-vars": "off",
+      "no-console": "off",
     },
   },
 ];

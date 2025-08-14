@@ -1,9 +1,34 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BACKGROUND_IMAGE_URL } from "../utils/constants";
 import Header from "./Header";
+import { checkValidateData } from "../utils/validate";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  //creating reference
+  const fullname = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+  const handleButtonClick = () => {
+    // ref objects
+    // console.log(email);
+    // console.log(password);
+    console.log(fullname.current.value);
+    console.log(email.current.value);
+    console.log(password.current.value);
+    // validate the form data
+    const message = checkValidateData(
+      fullname?.current.value,
+      email.current.value,
+      password.current.value
+    );
+    console.log(message);
+    setErrorMessage(message);
+
+    // Sign in/ Sign up
+  };
   const toggleSignupForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -22,34 +47,40 @@ const Login = () => {
 
           {/* Form Container */}
           <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-            <div className="max-w-md w-full bg-black/75 px-15 py-28 rounded-md text-white">
+            <div className="max-w-md w-full bg-black/70 px-15 py-28 rounded-md text-white">
               <h2 className="text-3xl font-bold mb-6">
                 {isSignInForm ? "Sign In" : "Sign Up"}
               </h2>
 
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 {!isSignInForm && (
                   <input
+                    ref={fullname}
                     type="text"
                     placeholder="Full Name"
                     className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                   />
                 )}
                 <input
+                  ref={email}
                   type="text"
                   placeholder="Email or mobile number"
                   className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
 
                 <input
+                  ref={password}
                   type="password"
                   placeholder="Password"
                   className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
-
+                <div className="error text-red-600 text-md text-center p-1">
+                  {errorMessage}
+                </div>
                 <button
+                  onClick={handleButtonClick}
                   type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-semibold"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-semibold cursor-pointer"
                 >
                   {isSignInForm ? "Sign In" : "Sign Up"}
                 </button>

@@ -17,8 +17,11 @@ If you are developing a production application, we recommend using TypeScript wi
 - Setup react testing library and jest
 - configured tailwindcss
 - Header
+- Routing of App
 - Loginform
 - SignUp form
+- Form Validations
+- useRef Hook
 
 # Using firebase
 
