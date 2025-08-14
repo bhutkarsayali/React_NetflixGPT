@@ -33,3 +33,16 @@ If you are developing a production application, we recommend using TypeScript wi
 - Browse (after authentication)  
    - Header - Main movie - Trailer in background - Title and ddescription - MovieSuggestions - MovieLists \* N
   NetFlixGPT - Search bar - Movie Suggestions
+
+# Firebase cli and deploy
+-create a firebase project
+-firebase install
+-add configuration
+-npm install -g firebase tools
+-firebase login
+-firebase init
+-firebase deploy
+
+ # Firebase project URL
+ https://console.firebase.google.com/project/netflixgpt-5fd57/overview
+ https://netflixgpt-5fd57.web.app/
