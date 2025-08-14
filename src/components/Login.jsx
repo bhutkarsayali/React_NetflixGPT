@@ -2,32 +2,80 @@ import { useRef, useState } from "react";
 import { BACKGROUND_IMAGE_URL } from "../utils/constants";
 import Header from "./Header";
 import { checkValidateData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
   //creating reference
-  const fullname = useRef(null);
+  // const fullname = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const handleButtonClick = () => {
     // ref objects
     // console.log(email);
     // console.log(password);
-    console.log(fullname.current.value);
+    // console.log(fullname?.current?.value);
     console.log(email.current.value);
     console.log(password.current.value);
-    // validate the form data
+
+    // validate the form data, when message is null then form is valid
     const message = checkValidateData(
-      fullname?.current.value,
       email.current.value,
       password.current.value
     );
     console.log(message);
     setErrorMessage(message);
 
-    // Sign in/ Sign up
+    // if (message === null) {
+    //   // Sign in/ Sign up : create a new user
+    // }
+    if (message) return;
+
+    // Sign in/ Sign up logic
+    if (!isSignInForm) {
+      //sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log("User =>", user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + ":" + errorMessage);
+          // ..
+        });
+    } else {
+      //sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("User =>", user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + ":" + errorMessage);
+        });
+    }
   };
   const toggleSignupForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -55,7 +103,6 @@ const Login = () => {
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 {!isSignInForm && (
                   <input
-                    ref={fullname}
                     type="text"
                     placeholder="Full Name"
                     className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"

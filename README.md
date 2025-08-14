@@ -22,6 +22,9 @@ If you are developing a production application, we recommend using TypeScript wi
 - SignUp form
 - Form Validations
 - useRef Hook
+- Firebase setup
+- Deploying app to production
+- Create Signup user account
 
 # Using firebase
 
@@ -46,3 +49,4 @@ If you are developing a production application, we recommend using TypeScript wi
  # Firebase project URL
  https://console.firebase.google.com/project/netflixgpt-5fd57/overview
  https://netflixgpt-5fd57.web.app/
+ https://netflixgpt-5fd57.firebaseapp.com/
