@@ -29,6 +29,8 @@ If you are developing a production application, we recommend using TypeScript wi
 - Created Redux Store with userSlice
 - Implemented Signout
 - Update profile API call
+- Bugfix: Sign up user displayname and profile picture update
+- Bugfix: if the user is not logged in redirect- /browse to login page and vice versa
 - Next - Fetch from TMDB movies
 
 # Using firebase

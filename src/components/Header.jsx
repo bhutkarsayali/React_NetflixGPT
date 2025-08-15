@@ -1,18 +1,46 @@
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { NETFLIX_LOGO_URL, NETFLIX_USER_ICON } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addUser, removeUser } from "../utils/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   console.log("userrr===", user);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        // User is sign in
+        // Update the store here, add as much data you want to put it on store
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        // redirect user to browse page after updating the store
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        // redirect user to main page after sign out
+        navigate("/");
+      }
+    });
+  }, []);
+
   const handleSignOutClick = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
       })
       .catch((error) => {
         // An error happened.
