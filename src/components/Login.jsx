@@ -88,7 +88,7 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="">
+      <div className="z-0 relative">
         <div
           className="min-h-screen bg-cover bg-center relative"
           style={{
@@ -117,6 +117,7 @@ const Login = () => {
                   ref={email}
                   type="text"
                   placeholder="Email or mobile number"
+                  autoComplete="username"
                   className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
 
@@ -124,6 +125,7 @@ const Login = () => {
                   ref={password}
                   type="password"
                   placeholder="Password"
+                  autoComplete="current-password"
                   className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
                 />
                 <div className="error text-red-600 text-md text-center p-1">
