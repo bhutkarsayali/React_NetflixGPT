@@ -23,25 +23,26 @@ const Header = () => {
     <div className="absolute w-full z-10">
       <div className="logo px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
         <img src={NETFLIX_LOGO_URL} alt="logo" className="w-60 h-30" />
-        <div className="flex items-center">
+        {user && (
           <div className="flex items-center">
-            {user?.photoURL ? (
-              <img
-                src={user.photoURL}
-                alt="User avatar"
-                className="w-8 h-8 user-icon cursor-pointer"
-              />
-            ) : (
-              <img
-                src={NETFLIX_USER_ICON}
-                alt="usericon"
-                className="w-8 h-8 user-icon cursor-pointer"
-              />
-            )}
+            <div className="flex items-center">
+              {user?.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt="User avatar"
+                  className="w-8 h-8 user-icon cursor-pointer"
+                />
+              ) : (
+                <img
+                  src={NETFLIX_USER_ICON}
+                  alt="usericon"
+                  className="w-8 h-8 user-icon cursor-pointer"
+                />
+              )}
 
-            <span className="text-white ml-4 cursor-pointer">▼</span>
-          </div>
-          {user && (
+              <span className="text-white ml-4 cursor-pointer">▼</span>
+            </div>
+
             <button
               onClick={handleSignOutClick}
               type="button"
@@ -63,8 +64,8 @@ const Header = () => {
               </svg>
               Sign Out
             </button>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
