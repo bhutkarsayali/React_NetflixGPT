@@ -27,6 +27,9 @@ If you are developing a production application, we recommend using TypeScript wi
 - Create Signup user account
 - Implement Sign In user Api
 - Created Redux Store with userSlice
+- Implemented Signout
+- Update profile API call
+- Next - Fetch from TMDB movies
 
 # Using firebase
 

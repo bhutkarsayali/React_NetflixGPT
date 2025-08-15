@@ -5,30 +5,36 @@ import { checkValidateData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   //creating reference
-  // const fullname = useRef(null);
+  const fullname = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
   const handleButtonClick = () => {
     // ref objects
+    console.log("fullname==", fullname);
     // console.log(email);
     // console.log(password);
-    // console.log(fullname?.current?.value);
+    console.log(fullname?.current?.value);
     console.log(email.current.value);
     console.log(password.current.value);
 
     // validate the form data, when message is null then form is valid
     const message = checkValidateData(
+      fullname?.current?.value,
       email.current.value,
       password.current.value
     );
@@ -46,14 +52,37 @@ const Login = () => {
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value
+        password.current.value,
+        fullname?.current?.value
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: fullname?.current?.value,
+            photoURL: "https://avatars.githubusercontent.com/u/35528987?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              // Update the store here, add as much data you want to put it on store
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              // redirect user to browse page after updating the store
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
+
           console.log("User =>", user);
-          // redirect user to browse page after updating the store
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -108,6 +137,7 @@ const Login = () => {
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                 {!isSignInForm && (
                   <input
+                    ref={fullname}
                     type="text"
                     placeholder="Full Name"
                     className="w-full px-4 py-3 bg-gray-800 rounded text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-600"
