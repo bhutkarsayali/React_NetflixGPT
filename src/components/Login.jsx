@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { BACKGROUND_IMAGE_URL } from "../utils/constants";
+import { BACKGROUND_IMAGE_URL, USER_PHOTO_URL } from "../utils/constants";
 import Header from "./Header";
 import { checkValidateData } from "../utils/validate";
 import {
@@ -57,7 +57,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: fullname?.current?.value,
-            photoURL: "https://avatars.githubusercontent.com/u/35528987?v=4",
+            photoURL: USER_PHOTO_URL,
           })
             .then(() => {
               // Profile updated!
