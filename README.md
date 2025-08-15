@@ -25,6 +25,8 @@ If you are developing a production application, we recommend using TypeScript wi
 - Firebase setup
 - Deploying app to production
 - Create Signup user account
+- Implement Sign In user Api
+- Created Redux Store with userSlice
 
 # Using firebase
 
