@@ -31,8 +31,10 @@ If you are developing a production application, we recommend using TypeScript wi
 - Update profile API call
 - Bugfix: Sign up user displayname and profile picture update
 - Bugfix: if the user is not logged in redirect- /browse to login page and vice versa
-- Next - Fetch from TMDB movies
-
+- Unsubscribed to the onAuthStateChanged callback
+- Add hardcoded values to the constant files
+- Register for TMDB API and create an app and get access token
+- Get data from TMDB now playing movies list API
 # Using firebase
 
 # FEATURES
@@ -40,11 +42,12 @@ If you are developing a production application, we recommend using TypeScript wi
 - Login / Signup
   - Sign In / Sign up Form
   - redirect to browse page
-- Browse (after authentication)  
-   - Header - Main movie - Trailer in background - Title and ddescription - MovieSuggestions - MovieLists \* N
-  NetFlixGPT - Search bar - Movie Suggestions
+- Browse (after authentication)
+  - Header - Main movie - Trailer in background - Title and ddescription - MovieSuggestions - MovieLists \* N
+    NetFlixGPT - Search bar - Movie Suggestions
 
 # Firebase cli and deploy
+
 -create a firebase project
 -firebase install
 -add configuration
@@ -53,7 +56,8 @@ If you are developing a production application, we recommend using TypeScript wi
 -firebase init
 -firebase deploy
 
- # Firebase project URL
- https://console.firebase.google.com/project/netflixgpt-5fd57/overview
- https://netflixgpt-5fd57.web.app/
- https://netflixgpt-5fd57.firebaseapp.com/
+# Firebase project URL
+
+https://console.firebase.google.com/project/netflixgpt-5fd57/overview
+https://netflixgpt-5fd57.web.app/
+https://netflixgpt-5fd57.firebaseapp.com/

@@ -6,3 +6,16 @@ export const NETFLIX_LOGO_URL =
 
 export const NETFLIX_USER_ICON =
   "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+
+export const USER_PHOTO_URL =
+  "https://avatars.githubusercontent.com/u/35528987?v=4";
+
+// TMDB
+export const TMDB_API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ODhmY2RiMDAzOGU3YjY2Njg1Y2FiOGY3MzFmYzVlZiIsIm5iZiI6MTc1NTI4MDcwMi4wNSwic3ViIjoiNjg5Zjc1M2VlMjUyOTk1ZDhjNzU3OTQzIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.EYZEyNMuwq8CIwLyd8M_cR_vR8kxavRw39sVp4XR7g0",
+  },
+};
