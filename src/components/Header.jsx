@@ -74,7 +74,7 @@ const Header = () => {
         <img
           src={NETFLIX_LOGO_URL}
           alt="NEXTFLIXGPT Logo"
-          className="w-96 h-64 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
+          className="w-80 h-50 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
         />
 
         {user && (

@@ -3,11 +3,10 @@ import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
-
 const Browse = () => {
   useNowPlayingMovies();
   return (
-    <div>
+    <div className="pb-50 bg-black">
       <Header />
       {/**
         MainContainer

@@ -43,6 +43,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - Update store with Trailer video data
 - Embedded the youtube video and make it autoplay and mute
 - Tailwind classes to make mainContainer and look awesome
+- Build secondaryComponent
 
 # Using firebase
 
