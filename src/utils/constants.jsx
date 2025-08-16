@@ -26,4 +26,10 @@ export const NOW_PLAYING_MOVIES_API =
 export const POPULAR_MOVIES_API =
   "https://api.themoviedb.org/3/movie/popular?page=1";
 
+export const UPCOMING_MOVIES_API =
+  "https://api.themoviedb.org/3/movie/upcoming?page=1";
+
+export const TOPRATED_MOVIES_API =
+  "https://api.themoviedb.org/3/movie/top_rated?page=1";
+
 export const TMDB_IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
