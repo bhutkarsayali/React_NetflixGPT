@@ -69,7 +69,7 @@ const Header = () => {
       <div
         className={`transition-transform duration-500 ease-in-out ${
           isZoomedOut ? "small" : ""
-        } logo px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center`}
+        } logo px-1 py-2 bg-gradient-to-b from-black flex justify-between items-center`}
       >
         <img
           src={NETFLIX_LOGO_URL}
