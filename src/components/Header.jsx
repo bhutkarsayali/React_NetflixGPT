@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../utils/redux-store/userSlice";
 import { useLocation } from "react-router-dom";
+import { toggleGptSearchView } from "../utils/redux-store/gptSlice";
 
 const Header = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const Header = () => {
   const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     // This block securely handles Firebase Auth state changes.
     // No credentials are manually captured or transmitted externally.
@@ -63,7 +65,8 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     //Toggle GPT search
-  }
+    dispatch(toggleGptSearchView());
+  };
   return (
     <div
       className={`transition-transform duration-500 ease-in-out ${
@@ -83,7 +86,10 @@ const Header = () => {
 
         {user && (
           <div className="flex items-center">
-            <button onClick={handleGptSearchClick} className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 mx-20 overflow-hidden font-medium text-white transition duration-500 ease-out bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-lg shadow-lg group hover:from-red-500 hover:via-pink-500 hover:to-purple-600">
+            <button
+              onClick={handleGptSearchClick}
+              className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 mx-20 overflow-hidden font-medium text-white transition duration-500 ease-out bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-lg shadow-lg group hover:from-red-500 hover:via-pink-500 hover:to-purple-600"
+            >
               <span className="relative">GPT Search 🔍</span>
             </button>
 

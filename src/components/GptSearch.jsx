@@ -1,5 +1,17 @@
-const GPTSearch = () => {
-  return <div>GPTSearch</div>;
+import GptMovieSuggestions from "./GptMovieSuggestions";
+import GptSearchBar from "./GptSearchBar";
+
+const GptSearch = () => {
+  return (
+    <div>
+      {/**
+        GptSearchBar
+        GptMovieSuggestions
+       */}
+      <GptSearchBar />
+      <GptMovieSuggestions/>
+    </div>
+  );
 };
 
-export default GPTSearch;
+export default GptSearch;
