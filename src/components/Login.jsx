@@ -10,6 +10,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import Disclaimer from "./Disclaimer";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -21,21 +22,12 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const handleButtonClick = () => {
-    // ref objects
-    console.log("fullname==", fullname);
-    // console.log(email);
-    // console.log(password);
-    console.log(fullname?.current?.value);
-    console.log(email.current.value);
-    console.log(password.current.value);
-
     // validate the form data, when message is null then form is valid
     const message = checkValidateData(
       fullname?.current?.value,
       email.current.value,
       password.current.value
     );
-    console.log(message);
     setErrorMessage(message);
 
     // if (message === null) {
@@ -76,8 +68,6 @@ const Login = () => {
               // An error occurred
               setErrorMessage(error.message);
             });
-
-          console.log("User =>", user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -95,7 +85,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("User =>", user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -186,7 +175,7 @@ const Login = () => {
                   </>
                 ) : (
                   <>
-                    <span className="text-lg">New to Netflix? </span>
+                    <span className="text-lg">New to NextflixGPT? </span>
                     <p
                       onClick={toggleSignupForm}
                       className="text-white hover:underline cursor-pointer ml-2 font-bold text-lg"
@@ -197,16 +186,17 @@ const Login = () => {
                 )}
               </div>
 
-              <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 my-6">
-                <p class="font-bold">⚠️ Disclaimer:</p>
-                <p class="mt-1">
+              <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 my-6">
+                <p className="font-bold">⚠️ Disclaimer:</p>
+                <p className="mt-1">
                   This is a developer demo project. It is{" "}
-                  <span class="font-bold underline">
+                  <span className="font-bold underline mx-1">
                     not affiliated with Netflix
                   </span>
-                  or any other brand. No real user credentials are collected or
-                  stored.
-                  <p className="font-bold">DO NOT REVEAL YOUR PERSONAL INFORMATION</p>
+                  or any other brand. No real user credentials required.
+                  <span className="font-bold">
+                    DO NOT REVEAL YOUR PERSONAL INFORMATION
+                  </span>
                 </p>
               </div>
             </div>

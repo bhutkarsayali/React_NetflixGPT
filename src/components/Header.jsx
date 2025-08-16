@@ -9,7 +9,6 @@ import { addUser, removeUser } from "../utils/userSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
-  console.log("userrr===", user);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,7 +54,12 @@ const Header = () => {
   return (
     <div className="absolute w-full z-10">
       <div className="logo px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
-        <img src={NETFLIX_LOGO_URL} alt="logo" className="w-60 h-30" />
+        <img
+          src={NETFLIX_LOGO_URL}
+          alt="NEXTFLIXGPT Logo"
+          className="w-96 h-64 animate-none transition-transform duration-30 hover:scale-105"
+        />
+
         {user && (
           <div className="flex items-center">
             <div className="flex items-center">
