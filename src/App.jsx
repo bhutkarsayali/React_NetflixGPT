@@ -8,6 +8,7 @@ const App = () => {
     <>
       <Provider store={appStore}>
         <Body />
+        {alert("This is a developer demo. Not affiliated with Netflix.")}
       </Provider>
     </>
   );

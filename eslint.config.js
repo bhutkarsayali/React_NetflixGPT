@@ -19,6 +19,7 @@ export default [
       globals: {
         fetch: "readonly",
         window: "readonly",
+        alert: "readonly",
         document: "readonly",
         test: "readonly",
         expect: "readonly",

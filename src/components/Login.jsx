@@ -197,10 +197,18 @@ const Login = () => {
                 )}
               </div>
 
-              <p className="mt-6 text-xs text-gray-500">
-                This page is protected by Google reCAPTCHA to ensure you're not
-                a bot.
-              </p>
+              <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 my-6">
+                <p class="font-bold">⚠️ Disclaimer:</p>
+                <p class="mt-1">
+                  This is a developer demo project. It is{" "}
+                  <span class="font-bold underline">
+                    not affiliated with Netflix
+                  </span>
+                  or any other brand. No real user credentials are collected or
+                  stored.
+                  <p className="font-bold">DO NOT REVEAL YOUR PERSONAL INFORMATION</p>
+                </p>
+              </div>
             </div>
           </div>
         </div>

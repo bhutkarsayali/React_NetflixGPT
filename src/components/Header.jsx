@@ -13,6 +13,8 @@ const Header = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    // This block securely handles Firebase Auth state changes.
+    // No credentials are manually captured or transmitted externally.
     const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
