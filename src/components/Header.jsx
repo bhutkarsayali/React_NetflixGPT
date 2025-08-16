@@ -3,10 +3,19 @@ import { NETFLIX_LOGO_URL, NETFLIX_USER_ICON } from "../utils/constants";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  const [isZoomedOut, setIsZoomedOut] = useState(false);
+
+  useEffect(() => {
+    // Zoom out on "/about" page (change as needed)
+    setIsZoomedOut(location.pathname === "/browse");
+  }, [location]);
+
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
 
@@ -52,12 +61,20 @@ const Header = () => {
       });
   };
   return (
-    <div className="absolute w-full z-10">
-      <div className="logo px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center">
+    <div
+      className={`transition-transform duration-500 ease-in-out ${
+        isZoomedOut ? "shrunk" : ""
+      } absolute w-full z-10 header`}
+    >
+      <div
+        className={`transition-transform duration-500 ease-in-out ${
+          isZoomedOut ? "small" : ""
+        } logo px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center`}
+      >
         <img
           src={NETFLIX_LOGO_URL}
           alt="NEXTFLIXGPT Logo"
-          className="w-96 h-64 animate-none transition-transform duration-30 hover:scale-105"
+          className="w-96 h-64 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
         />
 
         {user && (

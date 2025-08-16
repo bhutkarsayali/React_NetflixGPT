@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+.header {
+  transition: all 0.3s ease;
+  font-size: 2rem;
+}
+
+.header.shrunk {
+  font-size: 1.2rem;
+  transform: scaleY(0.6);
+  transform: translateY(-50px);
+}
+
+.logo {
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+
+.logo.small {
+  /* transform: scale(0.6); */
+}

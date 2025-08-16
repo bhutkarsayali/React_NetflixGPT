@@ -19,3 +19,6 @@ export const TMDB_API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ODhmY2RiMDAzOGU3YjY2Njg1Y2FiOGY3MzFmYzVlZiIsIm5iZiI6MTc1NTI4MDcwMi4wNSwic3ViIjoiNjg5Zjc1M2VlMjUyOTk1ZDhjNzU3OTQzIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.EYZEyNMuwq8CIwLyd8M_cR_vR8kxavRw39sVp4XR7g0",
   },
 };
+
+export const NOW_PLAYING_MOVIES_API =
+  "https://api.themoviedb.org/3/movie/now_playing?page=1";
