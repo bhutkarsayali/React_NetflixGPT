@@ -49,6 +49,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - TMDB Image CDN URL
 - Made the browse page amazing with tailwindcss
 - UsepopularMovies custom hook
+- GPT Search Feature
 
 # Using firebase
 

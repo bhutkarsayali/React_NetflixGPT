@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { POPULAR_MOVIES_API, TMDB_API_OPTIONS } from "../utils/constants";
-import { addPopularMovies } from "../utils/moviesSlice";
+import { addPopularMovies } from "../utils/redux-store/moviesSlice";
 import { useEffect } from "react";
 
 const usePopularMovies = () => {

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { TMDB_API_OPTIONS, TOPRATED_MOVIES_API } from "../utils/constants";
-import { addTopRatedMovies } from "../utils/moviesSlice";
+import { addTopRatedMovies } from "../utils/redux-store/moviesSlice";
 import { useEffect } from "react";
 
 const useTopRatedMovies = () => {

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { TMDB_API_OPTIONS, UPCOMING_MOVIES_API } from "../utils/constants";
-import { addUpComingMovies } from "../utils/moviesSlice";
+import { addUpComingMovies } from "../utils/redux-store/moviesSlice";
 import { useEffect } from "react";
 
 const useUpComingMovies = () => {
