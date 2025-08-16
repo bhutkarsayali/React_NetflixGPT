@@ -13,12 +13,12 @@ const useMovieTrailer = (movieId) => {
       TMDB_API_OPTIONS
     );
     const json = await data.json();
-    console.log(json);
+
 
     // check API response for videos data on TMDB by movie id and filter trailer's data among them
     const filterData = json.results.filter((video) => video.type === "Trailer");
     const officialTrailer = filterData.length ? filterData[0] : json.results[0];
-    console.log("trailer", officialTrailer);
+
     dispatch(addTrailorVideo(officialTrailer));
   };
 

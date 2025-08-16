@@ -10,7 +10,6 @@ const MainContainer = () => {
   if (movies === null) return;
   //Take 1st result from array to show as bg trailer
   const mainMovie = movies[0];
-  console.log(mainMovie);
 
   const { id, original_title, overview } = mainMovie;
 
