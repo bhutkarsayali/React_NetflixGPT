@@ -7,10 +7,13 @@ import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../utils/redux-store/userSlice";
 import { useLocation } from "react-router-dom";
 import { toggleGptSearchView } from "../utils/redux-store/gptSlice";
+import LanguageSelector from "./LanguageSelector";
 
 const Header = () => {
   const location = useLocation();
   const [isZoomedOut, setIsZoomedOut] = useState(false);
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   useEffect(() => {
     // Zoom out on "/about" page (change as needed)
@@ -67,6 +70,7 @@ const Header = () => {
     //Toggle GPT search
     dispatch(toggleGptSearchView());
   };
+
   return (
     <div
       className={`transition-transform duration-500 ease-in-out ${
@@ -83,6 +87,8 @@ const Header = () => {
           alt="NEXTFLIXGPT Logo"
           className="w-80 h-50 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
         />
+        
+        {showGptSearch && <LanguageSelector />}
 
         {user && (
           <div className="flex items-center">

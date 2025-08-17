@@ -33,3 +33,19 @@ export const TOPRATED_MOVIES_API =
   "https://api.themoviedb.org/3/movie/top_rated?page=1";
 
 export const TMDB_IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+// For Multilinguals
+export const SUPPORTED_LANGUAGES = [
+  {
+    identifier: "en-US",
+    name: "English",
+  },
+  {
+    identifier: "hi-IN",
+    name: "हिन्दी",
+  },
+  {
+    identifier: "es-ES",
+    name: "Español",
+  },
+];
