@@ -102,7 +102,7 @@ const Login = () => {
         <div
           className="min-h-screen bg-cover bg-center relative"
           style={{
-            backgroundImage: `url('${BACKGROUND_IMAGE_URL}')`, // Replace with actual poster collage URL
+            backgroundImage: `url('${BACKGROUND_IMAGE_URL}')`,
           }}
         >
           {/* Overlay */}
