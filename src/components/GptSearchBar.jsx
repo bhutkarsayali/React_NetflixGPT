@@ -3,9 +3,7 @@ import lang from "../utils/languageConstants";
 
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
-  console.log("langKey:", langKey);
-  console.log("lang object:", lang);
-
+  
   return (
     <div className="absolute w-full m-auto top-[150px]">
       <form

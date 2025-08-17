@@ -6,7 +6,6 @@ import { changeLanguage } from "../utils/redux-store/configSlice";
 const LanguageSelector = () => {
   const dispatch = useDispatch();
   const selectedLanguage = useSelector((store) => store.config.lang);
-  console.log("selectedLanguage : ", selectedLanguage);
 
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -23,7 +22,6 @@ const LanguageSelector = () => {
   }, []);
 
   const handleLanguageChange = (lang) => {
-    console.log("lang================", lang);
     dispatch(changeLanguage(lang));
   };
   return (
