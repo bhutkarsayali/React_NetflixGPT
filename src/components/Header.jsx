@@ -87,7 +87,7 @@ const Header = () => {
           alt="NEXTFLIXGPT Logo"
           className="w-80 h-50 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
         />
-        
+
         {showGptSearch && <LanguageSelector />}
 
         {user && (
@@ -96,7 +96,9 @@ const Header = () => {
               onClick={handleGptSearchClick}
               className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 mx-20 overflow-hidden font-medium text-white transition duration-500 ease-out bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-lg shadow-lg group hover:from-red-500 hover:via-pink-500 hover:to-purple-600"
             >
-              <span className="relative">GPT Search 🔍</span>
+              <span className="relative">
+                {showGptSearch ? "Homepage" : "GPT Search 🔍"}
+              </span>
             </button>
 
             <div className="flex items-center">
