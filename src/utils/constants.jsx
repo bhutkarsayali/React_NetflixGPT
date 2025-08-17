@@ -49,3 +49,6 @@ export const SUPPORTED_LANGUAGES = [
     name: "Español",
   },
 ];
+
+// GPT API-- DO NOT EXPOSE THIS KEY EVER
+export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;

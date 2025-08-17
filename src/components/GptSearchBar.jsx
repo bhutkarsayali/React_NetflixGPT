@@ -1,9 +1,93 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstants";
+import { useRef } from "react";
+import openai from "../utils/openai";
+import { TMDB_API_OPTIONS } from "../utils/constants";
+import { addGptMovieResult } from "../utils/redux-store/gptSlice";
 
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
-  
+  // when I click on search I want data from search input box ==> useRef to get data from input box
+  const searchText = useRef();
+
+  const dispatch = useDispatch();
+
+  const searchMovieInTMDB = async (movie) => {
+    //API call
+    const data = await fetch(
+      "https://api.themoviedb.org/3/search/movie?query=" +
+        movie +
+        "&include_adult=false&language=en-US&page=1",
+      TMDB_API_OPTIONS
+    );
+    const json = await data.json();
+    console.log(json.results);
+    return json.results;
+  };
+  const handleGptSearchClick = async () => {
+    // when I click on search I want data from search input box
+    console.log("searchText : ", searchText.current.value);
+
+    /**!SECTION
+     *  Make an API call to openai GPT API and get Movie Results
+        const gptQuery =
+          "Act as a Movie Recommendation System and suggest some movies for the query " +
+          searchText.current.value +
+          " only give me names of 5 movies, , comma separated like the example result given ahead. Example Result :  Gadar, Sholay, Don, GolMaal, Koi Mil Gaya";
+
+        const gptResponse = await openai.chat.completions.create({
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "user",
+              content: gptQuery,
+            },
+          ],
+        });
+        if(!gptResponse.choices) {//TODO: Write Error Handling}
+        console.log(gptResponse.choices[0].message.content);
+    */
+
+    /**
+     * * Open AI service is not subscribed so not allowing to use their APIs for free,
+     * so using below dummy data as its placeholder
+     * gptResponse.choices[0].message.content gives below string of movies=>
+     * "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Jane Bhi Do Yarro, Padosan"
+     * */
+
+    const gptMovies =
+      "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Choti Si baat, Padosan";
+    const dummyMovieChoisesFromGPT = gptMovies.split(",");
+    console.log("dummyMovieChoisesFromGPT =", dummyMovieChoisesFromGPT);
+
+    // Now for each movie, I will search TMDB API
+    const promiseArray = dummyMovieChoisesFromGPT.map((movie) =>
+      searchMovieInTMDB(movie)
+    );
+    /**  as above function is async operation, JS will call map immediately for 5 results but async operation will take time to resolve
+     * And this will return Promise for all 5 results like below,
+     * for each movie there will be new promise
+     * and promise will take some time to resolve
+     * [Promise, Promise, Promise, Promise, Promise, ]
+     * it will take some time to get json.results
+     * So now how to get data out of promise array
+     * In below tmdbResults we have to get the results from all 5 promises
+     * use Promise.all() that takes array of promises
+     * so wait for Promise.all to resolve and my program will wait for Promise.all to finish
+     * and Promise.all will only finish once my all 5 promises are resolved
+     */
+    const tmdbResults = await Promise.all(promiseArray);
+    console.log("tmdbResults => ", tmdbResults);
+
+    // Push all the tmdbResults movies data to the redux store to show to user
+    // Sending multiple data in action.payload as addGptMovieResult({movieNames: dummyMovieChoisesFromGPT, movieResults: tmdbResults})
+    dispatch(
+      addGptMovieResult({
+        movieNames: dummyMovieChoisesFromGPT,
+        movieResults: tmdbResults,
+      })
+    );
+  };
   return (
     <div className="absolute w-full m-auto top-[150px]">
       <form
@@ -28,16 +112,26 @@ const GptSearchBar = () => {
 
           {/* Input Field */}
           <input
+            ref={searchText}
             type="text"
-            placeholder={lang[langKey]?.gptSearchPlaceholder || "Search Here..."}
+            placeholder={
+              lang[langKey]?.gptSearchPlaceholder || "Search Here..."
+            }
             className="flex-grow bg-transparent outline-none text-gray-700 placeholder-gray-400 px-2"
           />
 
           {/* Search Button */}
-          <button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:bg-purple-700 text-white text-lg font-semibold cursor-pointer px-4 py-1 rounded-full transition duration-200">
+          <button
+            onClick={handleGptSearchClick}
+            className="bg-gradient-to-r from-orange-500 to-pink-500 hover:bg-purple-700 text-white text-lg font-semibold cursor-pointer px-4 py-1 rounded-full transition duration-200"
+          >
             {lang[langKey]?.search || "Search..."}
           </button>
         </div>
+        <p className="p-5 text-white font-semibold text-md">
+          OpenAI account is not subscribed, so Use Sample search string: "funny
+          indian retro movies"
+        </p>
       </form>
     </div>
   );
