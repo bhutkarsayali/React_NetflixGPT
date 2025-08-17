@@ -9,7 +9,7 @@ const GptSearch = () => {
   return (
     <div>
       <div
-        className="min-h-screen bg-cover bg-center relative -z-10"
+        className="min-h-screen bg-cover bg-center -z-10 fixed top-0 left-0 w-full h-[100vh]"
         style={{
           backgroundImage: `url('${BACKGROUND_IMAGE_URL}')`,
         }}

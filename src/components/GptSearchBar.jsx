@@ -56,7 +56,7 @@ const GptSearchBar = () => {
      * */
 
     const gptMovies =
-      "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Choti Si baat, Padosan";
+      "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Choti Si baat, Padosan, 3 idiots";
     const dummyMovieChoisesFromGPT = gptMovies.split(",");
     console.log("dummyMovieChoisesFromGPT =", dummyMovieChoisesFromGPT);
 
