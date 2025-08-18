@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TMDB_API_OPTIONS, UPCOMING_MOVIES_API } from "../utils/constants";
 import { addUpComingMovies } from "../utils/redux-store/moviesSlice";
 import { useEffect } from "react";
@@ -6,6 +6,9 @@ import { useEffect } from "react";
 const useUpComingMovies = () => {
   // add json.results to movie slide by dispatching an action
   const dispatch = useDispatch();
+
+  // Memoization, if nowPlaying Movies already that the data then dont fetch it again, it will save unnecessary API calls
+  const upComingMovies = useSelector((store) => store.movies.upComingMovies);
 
   const getUpComingMovies = async () => {
     // Fetch data from TMDB API
@@ -18,7 +21,7 @@ const useUpComingMovies = () => {
   useEffect(() => {
     //needs to be called only once so kept in useEffect with empty []
     // without [], you will see infinite API calls
-    getUpComingMovies();
+    !upComingMovies && getUpComingMovies();
   }, []);
 };
 
