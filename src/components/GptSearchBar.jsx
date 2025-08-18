@@ -21,12 +21,11 @@ const GptSearchBar = () => {
       TMDB_API_OPTIONS
     );
     const json = await data.json();
-    console.log(json.results);
     return json.results;
   };
   const handleGptSearchClick = async () => {
     // when I click on search I want data from search input box
-    console.log("searchText : ", searchText.current.value);
+    // console.log("searchText : ", searchText.current.value);
 
     /**!SECTION
      *  Make an API call to openai GPT API and get Movie Results
@@ -58,7 +57,6 @@ const GptSearchBar = () => {
     const gptMovies =
       "Andaz Apna Apna, Hera Pheri, Chupke Chupke, Choti Si baat, Padosan, 3 idiots";
     const dummyMovieChoisesFromGPT = gptMovies.split(",");
-    console.log("dummyMovieChoisesFromGPT =", dummyMovieChoisesFromGPT);
 
     // Now for each movie, I will search TMDB API
     const promiseArray = dummyMovieChoisesFromGPT.map((movie) =>
@@ -77,7 +75,7 @@ const GptSearchBar = () => {
      * and Promise.all will only finish once my all 5 promises are resolved
      */
     const tmdbResults = await Promise.all(promiseArray);
-    console.log("tmdbResults => ", tmdbResults);
+    // console.log("tmdbResults => ", tmdbResults);
 
     // Push all the tmdbResults movies data to the redux store to show to user
     // Sending multiple data in action.payload as addGptMovieResult({movieNames: dummyMovieChoisesFromGPT, movieResults: tmdbResults})
