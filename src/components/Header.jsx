@@ -80,21 +80,21 @@ const Header = () => {
       <div
         className={`transition-transform duration-500 ease-in-out ${
           isZoomedOut ? "small" : ""
-        } logo px-1 py-2 bg-gradient-to-b from-black flex justify-between items-center`}
+        } logo px-1 py-2 bg-gradient-to-b from-black flex justify-between items-center flex-col md:flex-row`}
       >
         <img
           src={NETFLIX_LOGO_URL}
           alt="NEXTFLIXGPT Logo"
-          className="w-80 h-50 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
+          className="w-40 h-25 md:w-80 md:h-50 animate-none transition-transform duration-30 hover:scale-105 [clip-path:inset(10%_10%_10%_10%)]"
         />
 
         {showGptSearch && <LanguageSelector />}
 
         {user && (
-          <div className="flex items-center">
+          <div className="flex items-center md:mt-0 justify-between md:justify-end">
             <button
               onClick={handleGptSearchClick}
-              className="cursor-pointer relative inline-flex items-center justify-center px-6 py-3 mx-20 overflow-hidden font-medium text-white transition duration-500 ease-out bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-lg shadow-lg group hover:from-red-500 hover:via-pink-500 hover:to-purple-600"
+              className="text-sm md:text-lg cursor-pointer relative inline-flex items-center justify-center px-4 py-2 md:px-6 md:py-3 mx-2 md:mx-20 overflow-hidden font-medium text-white transition duration-500 ease-out bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-lg shadow-lg group hover:from-red-500 hover:via-pink-500 hover:to-purple-600"
             >
               <span className="relative">
                 {showGptSearch ? "Homepage" : "GPT Search 🔍"}
@@ -116,13 +116,13 @@ const Header = () => {
                 />
               )}
 
-              <span className="text-white ml-4 cursor-pointer">▼</span>
+              <span className="text-white ml-2 cursor-pointer">▼</span>
             </div>
 
             <button
               onClick={handleSignOutClick}
               type="button"
-              className="flex items-center gap-2 m-2 cursor-pointer bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-red-400"
+              className="text-sm md:text-lg flex items-center gap-2 m-2 cursor-pointer bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-red-400"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ const Header = () => {
               </svg>
               Sign Out
             </button>
-          </div>
+          </div> 
         )}
       </div>
     </div>

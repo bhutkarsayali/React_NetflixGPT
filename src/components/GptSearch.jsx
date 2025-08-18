@@ -7,9 +7,9 @@ const GptSearch = () => {
     console.error("OpenAI API key is missing!");
   }
   return (
-    <div>
+    <>
       <div
-        className="min-h-screen bg-cover bg-center -z-10 fixed top-0 left-0 w-full h-[100vh]"
+        className="min-h-screen bg-cover bg-center -z-10 fixed top-0 left-0 w-full h-[100vh] object-cover"
         style={{
           backgroundImage: `url('${BACKGROUND_IMAGE_URL}')`,
         }}
@@ -17,9 +17,11 @@ const GptSearch = () => {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
-      <GptSearchBar />
-      <GptMovieSuggestions />
-    </div>
+      <div>
+        <GptSearchBar />
+        <GptMovieSuggestions />
+      </div>
+    </>
   );
 };
 

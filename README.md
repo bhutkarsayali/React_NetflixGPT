@@ -53,6 +53,15 @@ If you are developing a production application, we recommend using TypeScript wi
 - GPT Search Bar
 - (FEATURE) Multi-Language Feature in our App
 - Integrate GPT APISs
+- Get search OPenAi API key
+- GPT search API call
+- Fetched gptMovieSuggestions from TMDB
+- created gptSlice, addded data
+- Reused MovieList Component to make movie suggestion container 
+- Memoization
+- Added .env file
+- Adding .env file to gitignore
+- Made our site responsive
 
 # Using firebase
 

@@ -89,9 +89,9 @@ const GptSearchBar = () => {
     );
   };
   return (
-    <div className="absolute w-full m-auto top-[150px]">
+    <div className="absolute w-full m-auto top-[250px] md:top-[150px]">
       <form
-        className="p-6 w-2/3 m-auto bg-black/70"
+        className="p-6 w-full md:w-2/3 m-auto bg-black/70"
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="flex items-center w-full px-2 py-2 bg-white border border-gray-300 rounded-full shadow-sm">
